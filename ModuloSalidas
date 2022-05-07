@@ -1,0 +1,28 @@
+import javax.swing.JFrame;
+public class ModuloSalidas extends JFrame{
+    String historia;
+    ModuloPersistencias objPersistencias = new ModuloPersistencias();
+    public ModuloSalidas(){
+    
+        this.setSize(1000,500); //tamaño de la ventana
+        setDefaultCloseOperation(EXIT_ON_CLOSE); //define como se cierra la aplicacion
+        setTitle("ProyectoDenuncia"); //define el titulo de la ventana
+        setLocationRelativeTo(null); //posicion de la ventana al iniciarla
+    }
+    
+    public void mostrarDenuncias(){
+        
+                for (int i = 0; i<objPersistencias.getBaseDeDatos().size();i++){
+                    System.out.println("___________________________________");
+                    objPersistencias.getBaseDeDatos().get(i);
+                }
+    }
+    
+    public ModuloSalidas(String mostrarHistoria){
+        this.historia = mostrarHistoria;
+        imprimirHistoria();
+    }
+    public void imprimirHistoria(){
+        System.out.println(this.historia);
+    }
+}
