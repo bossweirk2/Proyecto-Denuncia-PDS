@@ -1,0 +1,132 @@
+import java.util.Scanner;
+public class ModuloEntradas
+{
+    static Scanner Denuncia = new Scanner(System.in);
+    ModuloProcesamiento objMP= new ModuloProcesamiento();
+    //ModuloPersistencias objPersistencia = new ModuloPersistencias();
+    static ModuloPersistencias objP1 = new ModuloPersistencias();
+    public ModuloEntradas(){
+        
+    }
+    
+    
+    public void hacerDenuncia(){
+        
+        
+        System.out.println("Ingresa el tipo de robo");
+        System.out.println("___________________________________");
+        System.out.println("1) Fleteo");
+        System.out.println("2) Raponazo");
+        System.out.println("3) Cosquilleo");
+        System.out.println("4) Atraco");
+        System.out.println("5) Uso de sustancias tóxicas");
+        System.out.println("___________________________________");
+        int tipoRobo = Denuncia.nextInt();
+        int fecha = 0;
+        String fechaTemp = "";
+        String historia = "";
+        ModuloPersistencias objP1 = new ModuloPersistencias();
+        switch (tipoRobo){
+            case 1:
+                System.out.println("Escogiste ---> Fleteo");
+                System.out.println("___________________________________");
+                
+                System.out.println("Escriba la fecha del robo (dd/mm/aaaa)");
+                fechaTemp = Denuncia.next().substring(3,5);
+                fecha = Integer.parseInt(fechaTemp);
+                
+                System.out.println("Describa como fue la situacion: ");
+                historia = Denuncia.next();
+                ModuloPersistencias objP2 = new ModuloPersistencias(historia, tipoRobo, fecha );
+                   
+                objP1.setBaseDeDatos(objP2);
+                break;
+                
+            case 2:
+                System.out.println("Escogiste ---> Raponazo");
+                System.out.println("___________________________________");
+                System.out.println("Escriba la fecha del robo (dd/mm/aaaa)");
+               fechaTemp = Denuncia.next().substring(3,5);
+                fecha = Integer.parseInt(fechaTemp);
+                System.out.print("Describa como fue la situacion: ");
+      
+                historia = Denuncia.next();
+                
+                ModuloPersistencias objP10 = new ModuloPersistencias();
+                
+                objP10.setHistoria(historia);
+                    objP10.setTipoRobo(tipoRobo);
+                    objP10.setFechaDeRobo(fecha);
+                    
+                    
+                    objP1.setBaseDeDatos(objP10);
+                
+                mostrarZombies();
+                
+            
+                /*ModuloPersistencias objP3 = new ModuloPersistencias(historia, tipoRobo, fecha );
+                   
+                objP1.setBaseDeDatos(objP3);*/
+                break;
+                
+            case 3:
+                System.out.println("Escogiste ---> Cosquilleo");
+                System.out.println("___________________________________");
+                System.out.println("Escriba la fecha del robo (dd/mm/aaaa)");
+                fechaTemp = Denuncia.next().substring(3,5);
+                fecha = Integer.parseInt(fechaTemp);
+                System.out.print("Describa como fue la situacion: ");
+               
+                historia = Denuncia.next();
+                
+                
+                ModuloPersistencias objP4 = new ModuloPersistencias(historia, tipoRobo, fecha );
+                   
+                objP1.setBaseDeDatos(objP4);
+                break;
+                
+            case 4:
+                System.out.println("Escogiste ---> Atraco");
+                System.out.println("___________________________________");
+                System.out.println("Escriba la fecha del robo (dd/mm/aaaa)");
+                fechaTemp = Denuncia.next().substring(3,5);
+                fecha = Integer.parseInt(fechaTemp);
+                System.out.print("Describa como fue la situacion: ");
+        
+                historia = Denuncia.next();
+                
+                ModuloPersistencias objP5 = new ModuloPersistencias(historia, tipoRobo, fecha );
+                   
+                objP1.setBaseDeDatos(objP5);
+                break;
+                
+            case 5:
+                System.out.println("Escogiste ---> Uso de sustancias tóxicas");
+                System.out.println("___________________________________");
+                System.out.println("Escriba la fecha del robo (dd/mm/aaaa)");
+                fechaTemp = Denuncia.next().substring(3,5);
+                fecha = Integer.parseInt(fechaTemp);
+                System.out.print("Describa como fue la situacion: ");
+       
+                historia = Denuncia.next();
+                ModuloPersistencias objP6 = new ModuloPersistencias(historia, tipoRobo, fecha );
+                   
+                objP1.setBaseDeDatos(objP6);
+                break;
+                
+               
+        }   
+    }
+    
+    public void mostrarZombies(){
+        String string = "";
+                for (int i = 0; i<objP1.getBaseDeDatos().size();i++){
+                    string+= "" + (i+1) +"\n";
+                    string+="" + objP1.getBaseDeDatos().get(i).getHistoria()+"\n";
+                    string+="" + objP1.getBaseDeDatos().get(i).getTipoRobo()+"\n";
+                    string+="" + objP1.getBaseDeDatos().get(i).getFechaDeRobo()+"\n";
+                    
+                    System.out.println(string);
+                }
+    }
+}
