@@ -1,0 +1,79 @@
+import java.util.Scanner;
+public class ModuloProcesamiento {
+    private int tipoRobo;
+    private String historia;
+    private int fecha;
+    
+    static Scanner sc = new Scanner(System.in);
+    public ModuloProcesamiento(){
+        int tipoRobo = 0;
+        String historia = "";
+        int fecha = 0;
+    
+    }
+    
+    public void consultarDenuncias(){
+        Scanner sc = new Scanner(System.in);
+        ModuloSalidas objMsalidas = new ModuloSalidas();
+        objMsalidas.mostrarDenuncias();
+        
+        System.out.println("Si desea filtrar las denuncias digite 1 ");
+        int opcion = sc.nextInt();
+        
+        
+        if (opcion == 1) {filtrarDenuncia();}
+    }
+    public void filtrarDenuncia(){        
+        ModuloPersistencias m1= new ModuloPersistencias();
+        System.out.println("Revise denuncias por mes\n"
+                + "----------------------------------------------------------------------\n"
+                + "Advertencia: Solo se pueden filtrar denuncias con el numero del mes\n"
+                + "----------------------------------------------------------------------\n"
+                + "Tenga en cuenta que\n"
+                + "01: Enero\n"
+                + "02: Febrero\n"
+                + "03: Marzo\n"
+                + "04: Abril\n"
+                + "05: Mayo\n"
+                + "06: Junio\n"
+                + "07: Julio\n"
+                + "08: Agosto\n"
+                + "09: Septiembre\n"
+                + "10: Octubre\n"
+                + "11: Noviembre\n"
+                + "12: Diciembre\n");
+        
+            int mes = sc.nextInt();
+            
+            for (int i=0;i<m1.getBaseDeDatos().size();i++){
+                if(m1.getBaseDeDatos().get(i).getFechaDeRobo()==mes){
+                    System.out.println(m1.getBaseDeDatos().get(i));
+            }
+         
+            }
+           }
+    public int getTipoRobo() {
+        return tipoRobo;
+    }
+
+    public void setTipoRobo(int tipoRobo) {
+        this.tipoRobo = tipoRobo;
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    public int getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(int fecha) {
+        this.fecha = fecha;
+    }
+    
+}
