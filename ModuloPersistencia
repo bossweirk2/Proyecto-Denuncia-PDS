@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+public class ModuloPersistencias{
+    
+    public static ArrayList <ModuloPersistencias> baseDeDatos = new ArrayList<ModuloPersistencias>();
+    public String historia;
+    public int tipoRobo;
+    public int fechaDeRobo;
+
+    public ModuloPersistencias() {
+    }
+    
+    public ModuloPersistencias(String historia, int tipoRobo, int fechaDeRobo) {
+        this.historia = historia;
+        this.tipoRobo = tipoRobo;
+        this.fechaDeRobo = fechaDeRobo;
+    }
+   
+    public ArrayList<ModuloPersistencias> getBaseDeDatos() {
+        return baseDeDatos;
+    }
+
+    public void setBaseDeDatos(ModuloPersistencias baseDeDatos) {
+        this.baseDeDatos.add(baseDeDatos);
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    public int getTipoRobo() {
+        return tipoRobo;
+    }
+
+    public void setTipoRobo(int tipoRobo) {
+        this.tipoRobo = tipoRobo;
+    }
+
+    public int getFechaDeRobo() {
+        return fechaDeRobo;
+    }
+
+    public void setFechaDeRobo(int fechaDeRobo) {
+        this.fechaDeRobo = fechaDeRobo;
+    }
+
+    @Override
+    public String toString() {
+        return "Robos\n" 
+                + "historia=" + historia +"\n"
+                + ", tipoRobo=" + tipoRobo+"\n" 
+                + ", fechaDeRobo=" + fechaDeRobo+"\n";
+    }
+}
