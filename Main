@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main (String[]args){
+        /*ModuloSalidas objMS = new ModuloSalidas();
+        objMS.setVisible(true); //esto hace visible la ventana que esta en la otra clase
+        */
+        while(true){
+            System.out.println("Proyecto PDS");
+            System.out.println("___________________________________");
+            System.out.println("digite 1 para hacer denuncia, 2 para consultar la denuncia y 3 para cerrar el programa");
+        
+             Scanner sc = new Scanner(System.in);
+            ModuloEntradas entrada = new ModuloEntradas();
+            ModuloProcesamiento objP = new ModuloProcesamiento();
+            int opcion = sc.nextInt();
+        
+            if (opcion == 1){entrada.hacerDenuncia();}
+            
+            else if(opcion == 2){objP.consultarDenuncias();}
+        
+            else if(opcion == 3)break;
+            System.out.println("______________________________________________________________________________________________________________");
+        }
+        ModuloPersistencias m1= new ModuloPersistencias();
+        System.out.println("Revise denuncias por mes");
+        
+        
+        
+        for (int i=0;i<m1.getBaseDeDatos().size();i++){
+        if(m1.getBaseDeDatos().get(i).getFechaDeRobo()==01){
+            System.out.println(m1.getBaseDeDatos().get(i));
+        }
+    }
+}
+}
